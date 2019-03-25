@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Train Time</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
-    <script src="./assets/javascript/train.js"
+    <header>Train Schedule</header>
+    <div class="displayHead">Current Train Schedule</div>
+    <div id="displayContainer"></div>
+    <div class="formHead">Add Train</div>
+    <div id="formContainer">
+        <form>
+            <label for="trainName">Train Name</label>
+            <br>
+            <input type="text" id="trainName">
+            <br>
+            <label type="text" for="destination">Destination</label>
+            <br>
+            <input id="destination">
+            <br>
+            <label type="text" for="firstTime">First Train Time (HH:mm)</label>
+            <br>
+            <input id="firstTime">
+            <br>
+            <label type="text" for="frequency">Frequency (min)</label>
+            <br>
+            <input type="text" id="frequency">
+            <br>
+            <button id="submit">Submit</button>
+        </form>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+    <script src="./assets/javascript/train.js"></script>
 </body>
+
 </html>

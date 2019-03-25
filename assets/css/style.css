@@ -1,0 +1,61 @@
+body {
+    background-image: url(../images/dark-paths.png);
+    font-family: 'Questrial', sans-serif;
+}
+
+header {
+    color: white;
+    text-align: center;
+    margin: 25px;
+    font-size: 30px;
+}
+
+#formContainer, #displayContainer {
+    background-color: white;
+    border: 5px solid #d9b70e;
+    margin: 25px 50px;
+    padding: 20px;
+}
+
+form {
+    width: 80%;
+}
+
+.formHead, .displayHead {
+    background-color: #d9b70e;
+    color: #0f1c3d;
+    margin: 25px 50px -25px 50px;
+    height: 35px;
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+label {
+    margin-bottom: 5px;
+    color: #0f1c3d;
+}
+
+input {
+    width: 124%;
+    margin: 5px 0px 20px 0px;
+    height: 35px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+button {
+    font-size: 18px;
+    background-color: #d9b70e;
+    color: #0f1c3d;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    height: 35px;
+    width: 80px;
+}
