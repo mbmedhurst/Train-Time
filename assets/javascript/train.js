@@ -38,11 +38,11 @@ db.collection('trainTime').onSnapshot(({ docs }) => {
     let { trainName, destination, frequency } = doc.data()
     let docElem = document.createElement('tr')
     docElem.innerHTML = `
-      <td style="width:25%; padding:5px 0px; font-weight:normal">${trainName}</td>
-      <td style="width:23%; font-weight:normal">${destination}</td>
-      <td style="width:20%; font-weight:normal">${frequency}</td>
-      <td>20:00</td>
-      <td>100</td>
+      <td style="width:22%; padding:5px 0px; font-weight:normal">${trainName}</td>
+      <td style="width:20%">${destination}</td>
+      <td style="width:20%; text-align:center">${frequency}</td>
+      <td style="width:20%; text-align:center">20:00</td>
+      <td style="width:20%; text-align:center">100</td>
     `
     document.querySelector('#trainDisp').append(docElem)
   })
