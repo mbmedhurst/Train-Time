@@ -15,13 +15,14 @@ let db = firebase.firestore()
 // taken entirely from class demo
 document.querySelector('#submit').addEventListener('click', e => {
   e.preventDefault()
+  // assigns id to each new document
   let id = db.collection('trainTime').doc().id
   db.collection('trainTime').doc(id).set({
     // create data fields in database document and link to corresponding form fields
     trainName: document.querySelector('#trainName').value,
     destination: document.querySelector('#destination').value,
     firstTrain: document.querySelector('#firstTrain').value,
-    frequency: document.querySelector('#frequency').value,
+    frequency: parseInt(document.querySelector('#frequency').value),
   })
   // clear form fields after submit
   document.querySelector('#trainName').value = ''
@@ -30,17 +31,19 @@ document.querySelector('#submit').addEventListener('click', e => {
   document.querySelector('#frequency').value = ''
 })
 
-// db.collection('trainTime').onSnapshot(({ docs }) => {
-//   document.querySelector('#displayContainer').innerHTML = ''
-//   docs.forEach(doc => {
-//     let { trainName, destination, firstTrain, frequency } = doc.data()
-//     let docElem = document.createElement('div')
-//     docElem.innerHTML = `
-//       <h3>${trainName}</h3>
-//       <h4>${destination}</h4>
-//       <h6>${firstTrain}</h6>
-//       <hr>
-//     `
-//     document.querySelector('#disp').append(docElem)
-//   })
-// })
+db.collection('trainTime').onSnapshot(({ docs }) => {
+  // clears all before adding entire set so that existing docs are not added again
+  document.querySelector('#trainDisp').innerHTML = ''
+  docs.forEach(doc => {
+    let { trainName, destination, frequency } = doc.data()
+    let docElem = document.createElement('tr')
+    docElem.innerHTML = `
+      <td style="width:25%; padding:5px 0px; font-weight:normal">${trainName}</td>
+      <td style="width:20%; font-weight:normal">${destination}</td>
+      <td style="width:20%; font-weight:normal">${frequency}</td>
+      <td>20:00</td>
+      <td>100</td>
+    `
+    document.querySelector('#trainDisp').append(docElem)
+  })
+})

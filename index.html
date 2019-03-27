@@ -14,7 +14,18 @@
 <body>
     <header>Train Schedule</header>
     <div class="displayHead">Current Train Schedule</div>
-    <div id="displayContainer"></div>
+    <div id="displayContainer">
+        <table>
+            <tr id="colHead">
+                <th id="tName">Train Name</th>
+                <th id="dest">Destination</th>
+                <th id="freq">Frequency</th>
+                <th id="next">Next Arrival</th>
+                <th id="mins">Minutes Away</th>
+            </tr>
+        </table>
+        <table id="trainDisp"></table>
+    </div>
     <div class="formHead">Add Train</div>
     <div id="formContainer">
         <form>
