@@ -81,15 +81,15 @@ db.collection('trainTime').onSnapshot(({ docs }) => {
     console.log(mins)
 
     // next train time is the current time plus the minutes until the next train
-    // let nextTrain = 
-    // console.log(mins)
+    let nextTrain = moment().add(mins, 'm').format("HH:mm")
+    console.log(nextTrain)
 
     let docElem = document.createElement('tr')
     docElem.innerHTML = `
       <td style="width:22%; padding:5px 0px; font-weight:normal">${trainName}</td>
       <td style="width:20%">${destination}</td>
       <td style="width:20%; text-align:center">${frequency}</td>
-      <td type="time" style="width:20%; text-align:center">${firstTrain}</td>
+      <td type="time" style="width:20%; text-align:center">${nextTrain}</td>
       <td style="width:20%; text-align:center">${mins}</td>
     `
     document.querySelector('#trainDisp').append(docElem)
