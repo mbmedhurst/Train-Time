@@ -31,18 +31,66 @@ document.querySelector('#submit').addEventListener('click', e => {
   document.querySelector('#frequency').value = ''
 })
 
+let date = moment().format('MMM Do YYYY')
+console.log(date)
+
+// current time
+let now = moment().format('MMMM Do YYYY, HH:mm')
+console.log(now)
+
+// let startTime = date+`${firstTrain.value}`
+// console.log(startTime)
+
+
+
+
+
+
+// difference between firstTrain and now in minutes
+
+
+
+// diff % frequency remainder
+// frequency - remainder = how long until next train comes
+// now + remaining mins = next train time
+// use .format to format time once minutes are calculated
+// let timeSinceFT = now - firstTrain
+// let remainder = timeSinceFT%frequency
+// let nextTrain = remainder + now (formatted into HH:mm)
+// let mins = nextTrain - now
+
+// add sort by minutes away, ascending
+
 db.collection('trainTime').onSnapshot(({ docs }) => {
   // clears all before adding entire set so that existing docs are not added again
   document.querySelector('#trainDisp').innerHTML = ''
   docs.forEach(doc => {
-    let { trainName, destination, frequency } = doc.data()
+    let { trainName, destination, frequency, firstTrain } = doc.data()
+    
+    // difference between the start time and now, in minutes
+    let differenceHours = moment.utc(moment(now,'MMMM Do YYYY, HH:mm').diff(moment(firstTrain, 'HH:mm'))).format("HH:mm")
+    let differenceMins = moment.duration(differenceHours).asMinutes()
+    console.log(differenceMins)
+
+    // minutes from now to next train is calculated using the remainder from
+    // minutes from first train until now divided by the frequency
+    // the remainder is the number of minutes until the next train
+    let remainder = differenceMins%frequency    
+    // minutes until the next train is the frequency minus the remainder
+    let mins = frequency - remainder
+    console.log(mins)
+
+    // next train time is the current time plus the minutes until the next train
+    // let nextTrain = 
+    // console.log(mins)
+
     let docElem = document.createElement('tr')
     docElem.innerHTML = `
       <td style="width:22%; padding:5px 0px; font-weight:normal">${trainName}</td>
       <td style="width:20%">${destination}</td>
       <td style="width:20%; text-align:center">${frequency}</td>
-      <td style="width:20%; text-align:center">20:00</td>
-      <td style="width:20%; text-align:center">100</td>
+      <td type="time" style="width:20%; text-align:center">${firstTrain}</td>
+      <td style="width:20%; text-align:center">${mins}</td>
     `
     document.querySelector('#trainDisp').append(docElem)
   })

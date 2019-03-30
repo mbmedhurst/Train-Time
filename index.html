@@ -37,9 +37,9 @@
             <br>
             <input id="destination">
             <br>
-            <label type="text" for="firstTrain">First Train Time (HH:mm)</label>
+            <label type="text" for="firstTrain">First Train Time (hh:mm am/pm)</label>
             <br>
-            <input id="firstTrain">
+            <input type="time" id="firstTrain">
             <br>
             <label type="text" for="frequency">Frequency (min)</label>
             <br>
@@ -48,6 +48,7 @@
             <button id="submit">Submit</button>
         </form>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
     <script src="./assets/javascript/train.js"></script>
 </body>
