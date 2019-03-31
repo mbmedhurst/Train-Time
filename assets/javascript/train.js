@@ -31,35 +31,9 @@ document.querySelector('#submit').addEventListener('click', e => {
   document.querySelector('#frequency').value = ''
 })
 
-let date = moment().format('MMM Do YYYY')
-console.log(date)
-
 // current time
 let now = moment().format('MMMM Do YYYY, HH:mm')
 console.log(now)
-
-// let startTime = date+`${firstTrain.value}`
-// console.log(startTime)
-
-
-
-
-
-
-// difference between firstTrain and now in minutes
-
-
-
-// diff % frequency remainder
-// frequency - remainder = how long until next train comes
-// now + remaining mins = next train time
-// use .format to format time once minutes are calculated
-// let timeSinceFT = now - firstTrain
-// let remainder = timeSinceFT%frequency
-// let nextTrain = remainder + now (formatted into HH:mm)
-// let mins = nextTrain - now
-
-// add sort by minutes away, ascending
 
 db.collection('trainTime').onSnapshot(({ docs }) => {
   // clears all before adding entire set so that existing docs are not added again
@@ -74,7 +48,6 @@ db.collection('trainTime').onSnapshot(({ docs }) => {
 
     // minutes from now to next train is calculated using the remainder from
     // minutes from first train until now divided by the frequency
-    // the remainder is the number of minutes until the next train
     let remainder = differenceMins%frequency    
     // minutes until the next train is the frequency minus the remainder
     let mins = frequency - remainder
@@ -84,6 +57,7 @@ db.collection('trainTime').onSnapshot(({ docs }) => {
     let nextTrain = moment().add(mins, 'm').format("HH:mm")
     console.log(nextTrain)
 
+    // rendering the data in the Current Train Schedule table
     let docElem = document.createElement('tr')
     docElem.innerHTML = `
       <td style="width:22%; padding:5px 0px; font-weight:normal">${trainName}</td>
