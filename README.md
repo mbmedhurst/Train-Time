@@ -15,7 +15,6 @@ Train schedule app - add a train to the schedule and the table will display what
 * clone git repository
 * open in browser
 
-### Screenshots
+### Screenshot
 
-#### Question Page
 ![train time page](./assets/images/trainTime.jpg)
